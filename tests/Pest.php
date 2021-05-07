@@ -11,7 +11,10 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('Feature');
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\TestCase;
+
+uses(Tests\TestCase::class, DatabaseTransactions::class)->in('Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +41,11 @@ expect()->extend('toBeOne', function () {
 | global functions to help you to reduce the number of lines of code in your test files.
 |
 */
+
+/**
+ * @return TestCase
+ */
+function this()
+{
+    return test();
+}
